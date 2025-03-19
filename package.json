@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "canvas": "^3.1.0",
+    "clear": "^0.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1"
+  },
+  "name": "hsycaptcha",
+  "version": "1.0.0",
+  "description": "Um captcha da Hsyst!",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "main": "node index.js"
+  },
+  "author": "Humberto (op3ny)",
+  "license": "Unlicense"
+}
