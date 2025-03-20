@@ -69,3 +69,82 @@ Porta ao qual o serviço está rodando.
 Para integrar o captcha a sua página de login, por exemplo, você pode usar como base o script abaixo:
 
 ```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Captcha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="message">Resolva o captcha para continuar</h1>
+    <div id="captcha-container"></div>
+    <script src="/captcha.js"></script>
+    <button id="bt-verificar" class="text-sm text-primary hover:text-secondary transition-all duration-300"> Verificar captcha </button>
+    
+    <script>
+        async function checkAuthorization() {
+            try {
+                const response = await fetch('http://localhost:3001/check_authorization', {
+                    method: 'GET',
+                    credentials: 'include',
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                return data.authorized ?? false;
+            } catch (error) {
+                console.error('Erro ao verificar autorização:', error);
+                return false;
+            }
+        }
+
+        document.getElementById('bt-verificar').addEventListener("click", async function () {
+            const messageElement = document.getElementById('message');
+            messageElement.textContent = 'Verificando...';
+            messageElement.className = '';
+            
+            const isAuthorized = await checkAuthorization();
+            
+            if (isAuthorized) {
+                messageElement.textContent = 'Sucesso!';
+                messageElement.className = 'success';
+                await fetch('http://localhost:3001/invalidate_captcha', {
+                    method: 'POST',
+                    credentials: 'include', // Inclui cookies na requisição
+                });
+            } else {
+                messageElement.textContent = 'Tente Novamente';
+                messageElement.className = 'error';
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+# CORS
+Nas linha 12-15 (12 a 15) você tem a configuração de cors já definida, basta descomentar!
+
+# Finalização
+Agradecemos pela escolha do HsyCaptcha, e caso você tenha gostado do projeto, considere acessar o [nosso site!](https://hsyst.xyz)
+
+# Créditos
+- [Humberto](https://github.com/op3ny) - Criação, penterest e desenvolvimento do projeto.
+- [Kael](https://github.com/oimeu) - Idealização
