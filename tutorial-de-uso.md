@@ -27,7 +27,7 @@ Abra o [index.js](https://github.com/Hsyst/HsyCaptcha/blob/main/index.js) e alte
 ## Passo 4
 Abra o [captcha.js](https://github.com/Hsyst/HsyCaptcha/blob/main/www/captcha.js) e altere as linhas:
 
-- Altere as linhas: 10, 64, 106
+- Altere as linhas: 10, 64, 106 de `URL_DO_SEU_SITE_AQUI` para `localhost:3001` (isso apenas para testes locais)
 - Remova as linhas que conterem: `alert("Arquivo captcha.js não configurado, abra o arquivo 'captcha.js' em seu servidor, e altere as informações pedidas no arquivo.")`
 
 ## Passo 5
