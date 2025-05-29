@@ -1,6 +1,6 @@
 # HsyCaptcha
 ## Idealizado por [Kael](https://github.com/oimeu)
-## Programado por [Humberto](https://github.com/op3ny)
+## Programado por [op3n](https://github.com/op3ny)
 
 # Tutorial de Uso
 Caso você queira apenas instalar o HsyCaptcha, [Clique Aqui!](https://github.com/Hsyst/HsyCaptcha/blob/main/tutorial-de-uso.md)
